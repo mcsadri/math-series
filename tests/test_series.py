@@ -1,5 +1,3 @@
-# series tests
-
 from series.series import fibonacci
 from series.series import lucas
 from series.series import sum_series
@@ -72,3 +70,28 @@ def test_lucas_n_equals_string():
 #################################################
 def test_sum_series_exists():
     assert sum_series
+
+def test_sum_series_n_equals_ten_no_optional_args():
+    sum_actual = sum_series(10)
+    sum_expected = 55
+    assert sum_actual == sum_expected
+
+def test_sum_series_n_equals_ten_optional_args():
+    sum_actual = sum_series(10, 2, 4)
+    sum_expected = 288
+    assert sum_actual == sum_expected
+
+def test_sum_series_n_equals_ten_optional_args_negative():
+    sum_actual = sum_series(14, -3, 5)
+    sum_expected = 1186
+    assert sum_actual == sum_expected
+
+def test_sum_series_n_equals_ten_optional_args_non_int():
+    sum_actual = sum_series(5, 2j, 5)
+    sum_expected = "please enter an integer >= 0"
+    assert sum_actual == sum_expected
+
+def test_sum_series_n_equals_ten_optional_args_string():
+    sum_actual = sum_series(5, 1, "doodah")
+    sum_expected = "please enter an integer >= 0"
+    assert sum_actual == sum_expected
